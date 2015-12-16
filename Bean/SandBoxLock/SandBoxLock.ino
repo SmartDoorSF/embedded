@@ -5,7 +5,7 @@
  * Input: TouchPad/BLE Verification
  * Drive: Servo
  * 
- * Difficult to connect
+ * Difficult to connect through BLE
  * 
  * PWMA: 1 Attached Servo PWM Pin
  * AIN1: 0
