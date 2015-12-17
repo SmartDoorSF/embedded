@@ -36,28 +36,26 @@ int PWMA = 1; // Speed Control
 int SW1 = 5;
 
 /* Unlock keycode ------------------------------------*/
-const char* KEY_CODE = "12345678";
+//const char* KEY_CODE = "12345678";
+int incomingByte = 0;
 
 void setup() {
   // put your setup code here, to run once:
   boltDrive.attach(PWMA);
   Serial.begin(57600);      // Baud Rate
   Serial.setTimeout(25);
-
   // Motor Controller Setup
   pinMode(PWMA, OUTPUT);
 //  pinMode(STBY, OUTPUT);
 //  pinMode(AIN1, OUTPUT);
 //  pinMode(AIN2, OUTPUT);
-
   pinMode(SW1, INPUT);
-
-  Bean.enableWakeOnConnect( true ); // SDK issue? after first handshake no state change?
+//  Bean.enableWakeOnConnect( true ); // SDK issue? after first handshake no state change?
 }
 
 void loop() {
   // Heartbeat
-//  Bean.setLed(0, 255, 0); 
+  Bean.setLed(0, 255, 0); 
   
   // put your main code here, to run repeatedly:
   char buffer[10];
@@ -65,9 +63,16 @@ void loop() {
   static char last_value = 0;
   static char index = 0;
   static char lock_state = 0;
+  
+//  readLength = Serial.readBytes(buffer, readLength);
+  if (Serial.available() > 0) {
+    incomingByte = Serial.read();  
+    Serial.print("Receive: ");
+//    Serial.println(buffer);
+    Serial.println(Bean.getConnectionState());
+//    Serial.print(incomingByte, DEC);
+    Serial.flush();
+  }
 
-  readLength = Serial.readBytes(buffer, readLength);
-  Serial.print("Receive: ");
-  Serial.println(buffer);
-  Bean.sleep(0xFFFFFFFF);
+//  Bean.sleep(0xFFFFFFFF);
 }
