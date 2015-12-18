@@ -19,7 +19,7 @@ void loop() {
   // put your main code here, to run repeatedly:
   Bean.setLed(0, 0, 255);
   delay(200);
-  Bean.setLed(0, 0, 255);
+  Bean.setLed(0, 0, 0);
 //  Wire.requestFrom(8, 6);       // Request 6 bytes from slave device #8
   Wire.beginTransmission(address);
   Wire.write(dataCount);
