@@ -32,3 +32,6 @@ The Core Location framework in iOS limits you to monitoring 20 regions at once. 
 iBeacons have two 16-bit fields name "major" and "minor".
 
 Beacon --> Advertising
+
+References:
+[Punch Through Design iBeacon Intro](https://punchthrough.com/bean/guides/features/ibeacon/)
