@@ -27,7 +27,7 @@ void receiveEvent(int bytes) {
 
 void loop() {
     Serial.println(x);
-    delay(20);
+    delay(200);
     if (x == 0) {
         digitalWrite(D7, HIGH);
         delay(200);

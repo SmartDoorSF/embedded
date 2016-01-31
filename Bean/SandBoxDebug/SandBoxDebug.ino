@@ -4,7 +4,6 @@
  * Master: Bean
  * Slave: Photon
  */
-
 #include <Wire.h>
 
 int address = 8;
