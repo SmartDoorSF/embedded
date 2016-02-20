@@ -72,3 +72,10 @@ telnet host port
 ```
 
 # RedBearLab
+
+Environment Setup dependencies
+
+1. GNU Tools for ARM Embedded Processors
+  current version: 
+2. srec_cat
+  "is used to assemble the given input files into a single output file."
