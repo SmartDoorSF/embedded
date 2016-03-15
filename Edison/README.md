@@ -8,3 +8,7 @@ Use
 ```
 to set up a password
 
+
+### Eclipse 
+
+Eclipse devkit IDE blinky examples works with LED on expansion board
