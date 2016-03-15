@@ -3,6 +3,6 @@ queryString.sh
 queryString2.sh
 queryString3.sh
 closeQuery.sh
-iCloseQuery.sh
-iOpenQuery.sh
+iCloseString.sh
+iOpenString.sh
 openQuery.sh
