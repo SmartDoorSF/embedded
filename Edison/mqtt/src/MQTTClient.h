@@ -2,7 +2,6 @@
  * MQTTClient.h
  *
  *  Created on: Mar 19, 2016
- *      Author: ianzhang
  */
 
 /*
@@ -27,7 +26,7 @@ class MQTTClient {
 				char *certificate_file, char *psk_identity, char *psk);
 		bool publish(char *topic, char *message);
 		bool subscribe(char *topic, void (*callback)(char *topic, char* messa));
-		bool loop();
+		void loop();
 		bool available();
 		void close();
 

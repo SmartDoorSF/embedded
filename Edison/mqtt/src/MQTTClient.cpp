@@ -7,8 +7,10 @@
 #include "MQTTClient.h"
 #include <fcntl.h>
 #include <iostream>
+#include <stdio.h>
+#include <string.h>
 
-using namespace std;
+//using namespace std;
 /*======================================================================
   Constructor/Destructor
 ========================================================================*/
@@ -99,7 +101,7 @@ bool MQTTClient::subscribe(char* topic,
   if true, parse topic and message and execute callback function
   return if pipe is empty
 ======================================================================*/
-bool MQTTClient::loop()
+void MQTTClient::loop()
 {
 	if(fgets(dataBuffer, sizeof(dataBuffer), spipe)) {
 		parseDataBuffer();
