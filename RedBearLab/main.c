@@ -135,10 +135,14 @@ static void nus_data_handler(ble_nus_t * p_nus, uint8_t * p_data, uint16_t lengt
     for (uint32_t i = 0; i < length; i++)
     {
         while(app_uart_put(p_data[i]) != NRF_SUCCESS);
+        // User control control information
+        if (p_data[i] == '1') {
+            nrf_gpio_pin_set(BSP_GPIO_D7);
+        } else {
+            nrf_gpio_pin_clear(BSP_GPIO_D7);
+        }
     }
     while(app_uart_put('\n') != NRF_SUCCESS);
-
-    // Set
 }
 /**@snippet [Handling the data received over BLE] */
 
@@ -513,7 +517,7 @@ static void buttons_leds_init(bool * p_erase_bonds)
  */
 static void gpio_init()
 {
-
+    nrf_gpio_cfg_output(BSP_GPIO_D7);
 }
 
 
@@ -543,6 +547,8 @@ int main(void)
     services_init();
     advertising_init();
     conn_params_init();
+
+    gpio_init();
 
     printf("\r\nUART Start!\r\n");
     err_code = ble_advertising_start(BLE_ADV_MODE_FAST);
