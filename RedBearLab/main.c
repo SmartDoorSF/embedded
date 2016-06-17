@@ -21,6 +21,10 @@
  * This application uses the @ref srvlib_conn_params module.
  */
 
+/**
+    TODO: Use pull up/down to define bootup state during output
+    TODO: Investigate power consumption of IO pullup/down
+ */
 #include <stdint.h>
 #include <string.h>
 #include "nordic_common.h"
@@ -137,9 +141,9 @@ static void nus_data_handler(ble_nus_t * p_nus, uint8_t * p_data, uint16_t lengt
         while(app_uart_put(p_data[i]) != NRF_SUCCESS);
         // User control control information
         if (p_data[i] == '1') {
-            nrf_gpio_pin_set(BSP_GPIO_D7);
+            nrf_gpio_pin_set(BSP_GPIO_D6);
         } else {
-            nrf_gpio_pin_clear(BSP_GPIO_D7);
+            nrf_gpio_pin_clear(BSP_GPIO_D6);
         }
     }
     while(app_uart_put('\n') != NRF_SUCCESS);
@@ -218,13 +222,16 @@ static void conn_params_init(void)
     APP_ERROR_CHECK(err_code);
 }
 
-
+/**
+ * As in 06/01/2016, we do not put chip in sleep mode
+ */
 /**@brief Function for putting the chip into sleep mode.
  *
  * @note This function will not return.
  */
 static void sleep_mode_enter(void)
 {
+    /*
     uint32_t err_code = bsp_indication_set(BSP_INDICATE_IDLE);
     APP_ERROR_CHECK(err_code);
 
@@ -235,6 +242,7 @@ static void sleep_mode_enter(void)
     // Go to system-off mode (this function will not return; wakeup will cause a reset).
     err_code = sd_power_system_off();
     APP_ERROR_CHECK(err_code);
+    */
 }
 
 
@@ -517,7 +525,7 @@ static void buttons_leds_init(bool * p_erase_bonds)
  */
 static void gpio_init()
 {
-    nrf_gpio_cfg_output(BSP_GPIO_D7);
+    nrf_gpio_cfg_output(BSP_GPIO_D6);
 }
 
 
@@ -525,8 +533,10 @@ static void gpio_init()
  */
 static void power_manage(void)
 {
+  /*
     uint32_t err_code = sd_app_evt_wait();
     APP_ERROR_CHECK(err_code);
+  */
 }
 
 
